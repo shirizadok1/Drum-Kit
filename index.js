@@ -71,9 +71,10 @@ function makeSound(key) {
 
   }
 
+}
   function buttonAnimation(currentKey) {
 
-    var activeButton = document.queryselector("." + currentKey);
+    var activeButton = document.querySelector("." + currentKey);
 
     activeButton.classList.add("pressed"); //adding the class from the css(preseed) to an object in js
 
@@ -82,6 +83,3 @@ function makeSound(key) {
     }, 100);
 
     }
-
-
-}

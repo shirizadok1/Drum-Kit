@@ -2,11 +2,15 @@
 
 var numberOfDrumButtons = document.querySelectorAll(".drum").length;
 
+var allTheSounds=[]; // creating an array to play all the sounds that are chosen
+
 for (var i = 0; i < numberOfDrumButtons; i++) {
 
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
 
     var buttonInnerHTML = this.innerHTML;
+
+    allTheSounds[i]= buttonInnerHTML; //adding the wanted sound to an array
 
     makeSuond(buttonInnerHTML);
 
@@ -83,3 +87,11 @@ function makeSound(key) {
     }, 100);
 
     }
+
+function playAllSuonds(allTheSounds) {
+
+  for(var i=0; i< allTheSounds.length; i++){
+    makeSound(allTheSounds[i]);
+  }
+
+}

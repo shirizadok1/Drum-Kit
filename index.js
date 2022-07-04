@@ -1,8 +1,4 @@
-//Detecting button press
-
 var numberOfDrumButtons = document.querySelectorAll(".drum").length;
-
-var allTheSounds=[]; // creating an array to play all the sounds that are chosen
 
 for (var i = 0; i < numberOfDrumButtons; i++) {
 
@@ -10,9 +6,7 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 
     var buttonInnerHTML = this.innerHTML;
 
-    allTheSounds[i]= buttonInnerHTML; //adding the wanted sound to an array
-
-    makeSuond(buttonInnerHTML);
+    makeSound(buttonInnerHTML);
 
     buttonAnimation(buttonInnerHTML);
 
@@ -20,10 +14,7 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 
 }
 
-
-//Detecting keyboard press
-
-document.addEventListener("keydown", function(event) { // The event is what triggered the keydown, the event.key gives us the letter that was pressed
+document.addEventListener("keypress", function(event) {
 
   makeSound(event.key);
 
@@ -31,10 +22,11 @@ document.addEventListener("keydown", function(event) { // The event is what trig
 
 });
 
+
 function makeSound(key) {
 
   switch (key) {
-    case "W":
+    case "w":
       var tom1 = new Audio("sounds/tom-1.mp3");
       tom1.play();
       break;
@@ -45,53 +37,45 @@ function makeSound(key) {
       break;
 
     case "s":
-      var tom3 = new Audio("sounds/tom-3.mp3");
+      var tom3 = new Audio('sounds/tom-3.mp3');
       tom3.play();
       break;
 
     case "d":
-      var tom4 = new Audio("sounds/tom-4.mp3");
+      var tom4 = new Audio('sounds/tom-4.mp3');
       tom4.play();
       break;
 
     case "j":
-      var snare = new Audio("sounds/snare.mp3");
+      var snare = new Audio('sounds/snare.mp3');
       snare.play();
       break;
 
     case "k":
-      var crash = new Audio("sounds/crash.mp3");
+      var crash = new Audio('sounds/crash.mp3');
       crash.play();
       break;
 
     case "l":
-      var kick = new Audio("sounds/kick-bass.mp3");
+      var kick = new Audio('sounds/kick-bass.mp3');
       kick.play();
       break;
 
 
-    default:
-      console.log(buttonInnerHTML);
+    default: console.log(key);
 
   }
-
 }
-  function buttonAnimation(currentKey) {
 
-    var activeButton = document.querySelector("." + currentKey);
 
-    activeButton.classList.add("pressed"); //adding the class from the css(preseed) to an object in js
+function buttonAnimation(currentKey) {
 
-    setTimeOut(function() {
-      activeButton.classList.remove("pressed");
-    }, 100);
+  var activeButton = document.querySelector("." + currentKey);
 
-    }
+  activeButton.classList.add("pressed");
 
-function playAllSuonds(allTheSounds) {
-
-  for(var i=0; i< allTheSounds.length; i++){
-    makeSound(allTheSounds[i]);
-  }
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+  }, 100);
 
 }
